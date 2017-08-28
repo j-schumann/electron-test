@@ -1,0 +1,58 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "yarn install && yarn compile && electron .",
+    "compile": "rimraf app/out",
+    "pack": "yarn compile && electron-builder --dir",
+    "dist": "yarn compile && electron-builder",
+    "release": "yarn compile && electron-builder"
+  },
+  "repository": "https://github.com/j-schumann/electron-test",
+  "keywords": [
+    "Electron",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "depencies" : {
+    "electron-updater": "^2.8.7"
+  },
+  "devDependencies": {
+    "electron": "~1.7.6",
+    "electron-builder": "next",
+    "rimraf": "^2.6.1"
+  },
+  "build": {
+    "appId": "org.vrok.electron",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "category": "DevTools",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": "portable"
+    }
+  }
+}
